@@ -28,6 +28,7 @@
   color: white;
   cursor: pointer;
 }
+
 .mode-container {
   margin-top: 30px;
 }
@@ -38,6 +39,7 @@
   gap: 20px;
   margin-top: 15px;
 }
+
 .status-container {
   margin-top: 15px;
   display: flex;
@@ -59,4 +61,30 @@
 
 .status-dot.offline {
   background: #ff3b3b;
+}
+
+/* ===============================
+   WELCOME SCREEN STYLES
+================================= */
+
+.welcome-screen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: white;
+}
+
+.welcome-text {
+  font-size: 3rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.welcome-sub {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  opacity: 0.8;
 }

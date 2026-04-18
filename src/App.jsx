@@ -116,11 +116,57 @@ function StatusIndicator() {
   );
 }
 export default function App() {
+  const [showWelcome, setShowWelcome] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowWelcome(false);
+    }, 2500); // 2.5 seconds
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (showWelcome) {
+    return (
+      <motion.div
+        className="welcome-screen"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <motion.h1
+          initial={{ y: 40, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="welcome-text"
+        >
+          ⚡ Smart Control
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+          className="welcome-sub"
+        >
+          Initializing System...
+        </motion.p>
+      </motion.div>
+    );
+  }
+
   return (
-    <div className="container">
+    <motion.div
+      className="container"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
       <h1>⚡ Smart Control Dashboard</h1>
       <StatusIndicator />
-<ModeControl />
+      <ModeControl />
+
       <div className="grid">
         <ToggleCard title="Relay 1" dbKey="relay1" />
         <ToggleCard title="Relay 2" dbKey="relay2" />
@@ -130,6 +176,6 @@ export default function App() {
         <ToggleCard title="SSR 2" dbKey="ssr2" />
         <ToggleCard title="SSR 3" dbKey="ssr3" />
       </div>
-    </div>
+    </motion.div>
   );
 }
